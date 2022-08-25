@@ -1,0 +1,24 @@
+body {
+    background-image: url('#');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.bodyContainer{
+    display: flex;
+    gap: 5rem;
+}
+
+
+.cardContainer {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 400px 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1em 3em;
+    margin: 1em 25%;
+}
