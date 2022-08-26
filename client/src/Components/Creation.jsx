@@ -100,7 +100,7 @@ function Creacion(){
                     <label>Temperamento:</label>
                     <select
                         className="field"
-                        name='temperament'
+                        
                         onChange={handleChange}
                     >
                         {
@@ -110,6 +110,7 @@ function Creacion(){
                                         key={el.id}
                                         name='temperament'
                                         value={el.temperament}
+                                        name='temperament'
                                     >
                                         {el.temperament}
                                     </option>

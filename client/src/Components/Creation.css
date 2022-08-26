@@ -1,6 +1,6 @@
 
 .tituloCreacion {
-    color: #cac7ff;
+    color: var(--contrast-color);
 }
 
 .formCreation {
@@ -8,7 +8,7 @@
     margin: 0 auto;
     padding: 10px;
     font-size: 20px;
-    color: #cac7ff;
+    color: var(--contrast-color);
     width: 35rem;
     gap: 3rem;
     backdrop-filter: blur(8px);
@@ -38,7 +38,7 @@
 }
 
 .botonSubmit {
-    color: #090909;
+    color: var(--contrast-color);
     padding: 0.7em 1.7em;
     font-size: 18px;
     border-radius: 0.5em;
@@ -56,3 +56,6 @@
 .botonSubmit:active {
     box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff;
 }
+ .temperament{
+    color: var(--contrast-color);
+ }

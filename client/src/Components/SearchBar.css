@@ -36,9 +36,9 @@ nav .menu input {
     box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
     transition: 0.3s;
 }
-/* ::placeholder {
-    color: #cac7ff;
-} */
+::placeholder {
+    color: var(--contrast-color);
+}
 nav .menu input:focus {
     outline-color: #e8e8e8;
     background: #e8e8e8;
@@ -48,7 +48,7 @@ nav .menu input:focus {
 
 .botonNav {
     height: 49px;
-    color: #090909;
+    color: var(--contrast-color);
     /* padding: 0.7em 1.7em; */
     font-size: 18px;
     border-radius: 0.5em;

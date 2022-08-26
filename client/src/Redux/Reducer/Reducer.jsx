@@ -115,14 +115,24 @@ const rootReducer = (state = inicialState, action) => {
                 allDogs: sortedArrPeso.map(e => e)
             }
         case TEMPERAMENT_DOG:
-            console.log('action.payload temperament REDUCER-> ', action.payload )
-            const copyDataTemperament = state.selectTemperament;
-            const allTemperamentData = state.temperament;
-            console.log('filterTemperament REDUCER->', allTemperamentData[1].temperament);
-            const filterTemperament =  allTemperamentData[1].filter(el => console.log('estoy aca!->',el) )
+            let copyDataTemperament = state.selectTemperament;
+            //let allTemperamentData = state.temperament;
+            console.log('copyDataTemperament REDUCER->', copyDataTemperament);
+            const resultTemperamentMap = copyDataTemperament.map(e =>{
+                return {
+                    id: e.id,
+                    image: e.image,
+                    name: e.name,
+                    temperament: e.temperament?.replace(/\s+/g, '').split(','),
+                    weight: e.weight
+                }
+            });
+            const filterTemperament =  resultTemperamentMap.filter((el) => el.temperament?.includes(action.payload));
+            console.log('filterTemperament ->>', filterTemperament);
+            
             return {
                 ...state,
-                allDogs: filterTemperament
+                // allDogs: resultTemperamentMap.filter((el) => el.temperament?.includes(action.payload))
             }
         default: 
             return state;
@@ -130,3 +140,6 @@ const rootReducer = (state = inicialState, action) => {
 };
 
 export default rootReducer;
+
+
+//e.temperament?.replace(/\s+/g, '')

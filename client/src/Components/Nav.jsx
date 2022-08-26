@@ -61,7 +61,7 @@ function Nav(){
 
     return (
         <ul className="ulMenu">
-            <li><lavel>ordenamiento: </lavel><select 
+            <li><lavel className="lavelMenu" >ordenamiento: </lavel><select 
                     className='selectMenu'
                     onClick={e => handleSort(e)}
                 > 
@@ -69,7 +69,7 @@ function Nav(){
                 <option className='optionMenu' value='desc'> Descendente </option> 
             </select></li>
 
-            <li><lavel>peso: </lavel><select
+            <li><lavel className="lavelMenu">peso: </lavel><select
                     className='selectMenu'
                     onClick={e => handlePeso(e)}
                 > 
@@ -77,7 +77,7 @@ function Nav(){
                 <option className='optionMenu' value='menor'> Menor Peso </option>
             </select></li>
 
-            <li><lavel>existentes: </lavel><select
+            <li><lavel className="lavelMenu">existentes: </lavel><select
                     className='selectMenu'
                     onClick={e => handleExistent(e)}
                 > 
@@ -87,7 +87,7 @@ function Nav(){
             </select></li>
 
             <li>
-                <label>Temperamento: </label>
+                <label className="lavelMenu">Temperamento: </label>
                 <select
                     className='selectMenu'
                     onChange={handleChange}
