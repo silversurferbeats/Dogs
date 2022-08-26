@@ -60,10 +60,10 @@
     box-sizing: border-box;
   }
   
-  :root {
+  /* :root {
     --secondary-color: #151226;
     --contrast-color: #BF307F;
-  }
+  } */
   .overlay {
     position: absolute;
     top: 0;

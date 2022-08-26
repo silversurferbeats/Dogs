@@ -8,6 +8,7 @@ import './Home.css'
 
 import Card from "./Card";
 import Paginado from "./Paginado";
+import Loader from "./Loader";
 
 function Home(){
 
@@ -58,7 +59,8 @@ function Home(){
             </div>
             <div className="cardContainer">
                 {
-                    currentDog.map((el) => {
+                    currentDog.length ?
+                    currentDog?.map((el) => {
                         return (
                             <div key={el.id}>
                                 <Link to={'/detail/' + el.id}>
@@ -72,6 +74,10 @@ function Home(){
                             </div>
                         )
                     })
+                    :
+                    <div className="Loader">
+                        <Loader/>
+                    </div>
                 }
             </div>
         </div>

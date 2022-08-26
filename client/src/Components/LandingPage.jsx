@@ -20,8 +20,8 @@ function LandingPage(){
                         </p>
                     </div>
                     <div className="btns">
-                    <Link to='/home'>
-                        <button className="btns">see more</button>
+                    <Link to='/home' className="btns">
+                        <button className="btns_more">see more</button>
                     </Link>
                     </div>
                 </div>

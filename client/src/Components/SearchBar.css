@@ -3,7 +3,7 @@ nav {
     height: 5rem;
     /* background: rgb(0,0,238);
     background: linear-gradient(90deg, rgba(0,0,238,1) 0%, rgba(221,238,0,0.21922272326899506) 100%); */
-    background: white;
+    background: rgb(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
