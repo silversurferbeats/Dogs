@@ -1,7 +1,7 @@
 {
   "name": "pi-dogs-main",
   "version": "1.0.0",
-  "description": "![HenryLogo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)",
+  "description": "dogJson",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/silversurferbeats/Dogs.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
