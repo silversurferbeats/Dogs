@@ -1,58 +1,4 @@
-/* .conteiner{
-    width: 100%;
-    height: 713px;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.conteiner video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.content {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background-color: black;
-    opacity: 0.8;
-    font-family: 'fjalla one', 'sans-serif';
-} */
-
-/* esto estaba comentado */
-/* .content h1 {
-    color: rgb(207, 207, 207);
-    font-size: 4rem;
-} */
-
-/* .content img {
-    width: 30rem;
-    height: 25rem;
-}
-
-.content button {
-    width: 7rem;
-    height: 2rem;
-    border-radius: 5px;
-    background: rgb(207, 207, 207);
-} */
-
-
-
-
-
-/* NUEVOS ESTILOS ---------------->*/
 
 * {
     margin: 0;
@@ -60,10 +6,6 @@
     box-sizing: border-box;
   }
   
-  /* :root {
-    --secondary-color: #151226;
-    --contrast-color: #BF307F;
-  } */
   .overlay {
     position: absolute;
     top: 0;
@@ -88,11 +30,10 @@
     transition: all .8s ease;
     opacity: 0.8;
   }
-  .conteiner video {
-    width: 150%;
-    height: 200rem;
-    /* object-fit: cover; */
-    overflow: hidden;
+  .overlay video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
   
   .container_content {
@@ -120,7 +61,7 @@
     overflow: hidden;
   }
   
-  p{
+  .textLanding{
     line-height: 28px;
     transform: translateY(300px);
     animation: slideUp .8s ease-in-out forwards .8s;
@@ -187,4 +128,78 @@
       transform: translateX(0px);
     }
   }
-  
+
+/* -----------------------------------------------> */
+.container__slider{
+  max-width: 1000px;
+  height: 500px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+}
+
+.input__content[type=radio]{
+  display: none;
+}
+
+.container__content{
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  max-height: 600px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards__slider{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.card__slider{
+  position: absolute;
+  width: 60%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.img__slider{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
+#item-2:checked ~ .cards__slider #selector-1,
+#item-1:checked ~ .cards__slider #selector-3,
+#item-3:checked ~ .cards__slider #selector-2{
+  transform: translateX(-40%) scale(0.8);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+#item-3:checked ~ .cards__slider #selector-1,
+#item-1:checked ~ .cards__slider #selector-2,
+#item-2:checked ~ .cards__slider #selector-3{
+  transform: translateX(40%) scale(0.8);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards__slider #selector-1,
+#item-2:checked ~ .cards__slider #selector-2,
+#item-3:checked ~ .cards__slider #selector-3{
+  transform: translateX(0) scale(1);
+  z-index: 1;
+}

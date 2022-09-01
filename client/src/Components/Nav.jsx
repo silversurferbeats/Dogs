@@ -10,10 +10,6 @@ import {
 import { getTemperament } from '../Redux/Actions/Action';
 
 
-
-
-
-
 function Nav(){
     const dispatch = useDispatch();
     const AllTemperament = useSelector((state) => state.temperament);
@@ -33,13 +29,12 @@ function Nav(){
     function handleSort(e){
         e.preventDefault();
         dispatch(orderByRaza(e.target.value))
-        //console.log('se mando el handleSort');
     }
 
     function handleExistent(e){
         e.preventDefault();
         dispatch(orderExistent(e.target.value));
-        //console.log('se mando handleExistent');
+        console.log('se mando handleExistent');
     }
 
     function handlePeso(e){
@@ -61,25 +56,25 @@ function Nav(){
 
     return (
         <ul className="ulMenu">
-            <li><lavel className="lavelMenu" >ordenamiento: </lavel><select 
+            <li><label className="lavelMenu" >ordenamiento: </label><select 
                     className='selectMenu'
-                    onClick={e => handleSort(e)}
+                    onChange={handleSort}
                 > 
                 <option className='optionMenu' value='asc'> Ascendente </option>
                 <option className='optionMenu' value='desc'> Descendente </option> 
             </select></li>
 
-            <li><lavel className="lavelMenu">peso: </lavel><select
+            <li><label className="lavelMenu">peso: </label><select
                     className='selectMenu'
-                    onClick={e => handlePeso(e)}
+                    onChange={handlePeso}
                 > 
                 <option className='optionMenu' value='mayor'> Mayor Peso </option>
                 <option className='optionMenu' value='menor'> Menor Peso </option>
             </select></li>
 
-            <li><lavel className="lavelMenu">existentes: </lavel><select
+            <li><label className="lavelMenu">existentes: </label><select
                     className='selectMenu'
-                    onClick={e => handleExistent(e)}
+                    onChange={handleExistent}
                 > 
                 <option className='optionMenu' value='all'>todos</option>
                 <option className='optionMenu' value='created'>creado</option>
@@ -90,20 +85,23 @@ function Nav(){
                 <label className="lavelMenu">Temperamento: </label>
                 <select
                     className='selectMenu'
-                    onChange={handleChange}
-                    onClick={e => handleTemperament(e)}
+                    onChange={handleTemperament}
+                    // onClick={e => handleTemperament(e)}
                     name='temperament'
                 >
+                    <option value='all'>all</option>
                     {
                         AllTemperament?.map((el) =>{
+
                             return (
+
                                 <option
                                     className='optionMenu'
                                     key={el.id}
                                     name='temperament'
-                                    value={el.temperament}
+                                    value={el.name}
                                 >
-                                    {el.temperament}
+                                    {el.name}
                                 </option>
                             )
                         })

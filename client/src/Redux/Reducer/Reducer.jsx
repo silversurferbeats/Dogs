@@ -40,6 +40,7 @@ const rootReducer = (state = inicialState, action) => {
                 temperament: action.payload
             }
         case DETAIL_DOG:
+            //let result = action.payload
             return {
                 ...state,
                 detailDog: action.payload
@@ -48,7 +49,6 @@ const rootReducer = (state = inicialState, action) => {
             return {
                 ...state
             }
-            
         // FILTROS:
         case ORDER_BY_RAZA:
             let newStateRaza = state.allRaza;
@@ -78,10 +78,11 @@ const rootReducer = (state = inicialState, action) => {
             }
         case EXISTENT_DOG:
             let newStateExistent = state.allRaza;
+            console.log('existente REDUCER  -->', newStateExistent);
             const filterExistent = action.payload === 'created' ? 
-                newStateExistent.filter(el => el.createdInDb)
+                newStateExistent.filter((el) => el.createdInDb)
                 :
-                newStateExistent.filter(el => !el.createdInDb);
+                newStateExistent.filter((el) => !el.createdInDb);
             return{
                 ...state,
                 allDogs: action.payload === 'all' ? newStateExistent : filterExistent
@@ -90,21 +91,21 @@ const rootReducer = (state = inicialState, action) => {
             let newStatePeso = state.allRaza;
             let sortedArrPeso = action.payload === 'menor' ?
                 newStatePeso.sort(function(a, b){
-                    console.log('sortedArrPeso a ->', a.weight_max)
-                    if(a.weight[1] > b.weight[1]){
+                    console.log('sortedArrPeso a ->', a.weight_min)
+                    if(a.weight_min[1] > b.weight_min[1]){
                         return 1;
                     }
-                    if(b.weight[1] > a.weight[1]){
+                    if(b.weight_min[1] > a.weight_min[1]){
                         return -1;
                     }
                     return 0;
                 })
                 :
                 newStatePeso.sort(function(a, b){
-                    if(a.weight[1] > b.weight[1]){
+                    if(a.weight_min[1] > b.weight_min[1]){
                         return -1;
                     }
-                    if(b.weight[1] > a.weight[1]){
+                    if(b.weight_min[1] > a.weight_min[1]){
                         return 1;
                     }
                     return 0;
@@ -116,23 +117,12 @@ const rootReducer = (state = inicialState, action) => {
             }
         case TEMPERAMENT_DOG:
             let copyDataTemperament = state.selectTemperament;
-            //let allTemperamentData = state.temperament;
-            console.log('copyDataTemperament REDUCER->', copyDataTemperament);
-            const resultTemperamentMap = copyDataTemperament.map(e =>{
-                return {
-                    id: e.id,
-                    image: e.image,
-                    name: e.name,
-                    temperament: e.temperament?.replace(/\s+/g, '').split(','),
-                    weight: e.weight
-                }
-            });
-            const filterTemperament =  resultTemperamentMap.filter((el) => el.temperament?.includes(action.payload));
-            console.log('filterTemperament ->>', filterTemperament);
-            
+            const resultTemperament = action.payload === 'all' ?
+                state.allDogs :
+                copyDataTemperament.filter((t) => t.temperament && t.temperament.includes(action.payload));
             return {
                 ...state,
-                // allDogs: resultTemperamentMap.filter((el) => el.temperament?.includes(action.payload))
+                allDogs: resultTemperament
             }
         default: 
             return state;
@@ -141,5 +131,3 @@ const rootReducer = (state = inicialState, action) => {
 
 export default rootReducer;
 
-
-//e.temperament?.replace(/\s+/g, '')

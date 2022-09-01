@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa"; // instalar react icon!
 import { Link } from 'react-router-dom';
 import { getNameDog } from '../Redux/Actions/Action';
 import './SearchBar.css';
-import img from '../Assets/logoDog4.png';
+import img from '../Assets/logoDog5.png';
 
 function SearchBar(){
     const dispatch = useDispatch();
@@ -49,7 +49,7 @@ function SearchBar(){
                     </form>
                     <Link to={'./creation'}>
                         <button className="botonNav">
-                            Crea tu cachorro
+                            Crear Perro
                         </button>
                     </Link>
                 </ul>

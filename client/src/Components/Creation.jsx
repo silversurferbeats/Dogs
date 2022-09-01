@@ -19,11 +19,12 @@ function Creacion(){
     const dispatch = useDispatch();
     const AllTemperament = useSelector((state) => state.temperament)
     
+    
     // INICIALIZO VALORES INICIALES INPUT
     const [input, setInput ] = useState({
         name:"",
         image: "",
-        temperament: "",
+        temperament: [],
         height: 0,
         weight: 0,
         life_span: 0
@@ -33,8 +34,24 @@ function Creacion(){
     const [rangoHp, setRangoHp] = useState(0);
     const [rangoAttack, setRangoAttack] = useState(0);
     const [rangoDefense, setRangoDefense] = useState(0);
-    const [ temperamentoActual, setTemperamentoActual ] = useState('');
 
+    // VALIDACIONES :
+    const validation = (input) => {
+        // console.log('input ->', input.temperament);
+        let error = {}
+        if(input.name.length < 3 || input.name.length > 15) error.name = 'invalid name';
+        if(input.image.length < 3 ) error.image = 'invalid image';
+        // if(input.temperament.length > 1) error.temperament = 'invalid temperament';
+        if(input.height_max < 1 || input.height_max > 100) error.height_max = 'invalid height';
+        if(input.weight_min < 1 || input.weight_min > 100) error.weight_min = 'invalid weight';
+        if(input.life_span < 1 || input.life_span > 100) error.life_span = 'invalid year';
+        return error
+    }
+    function invalidCreated(input){
+        let error = validation(input)
+        if(error.name || error.image || error.temperament || error.height_max || error.weight_min || error.life_span) return true
+    }
+    // ---->
     useEffect(() => {
         dispatch(getTemperament());
     }, [dispatch])
@@ -48,30 +65,40 @@ function Creacion(){
         })
     }
 
+    function handleTemperament(e){
+        if(!input.temperament.includes(e.target.value)){
+            setInput({
+                ...input,
+                temperament: [...input.temperament, e.target.value]
+            })
+        }
+        if(input.temperament.includes(e.target.value)){
+            alert('no se puede elegir el mismo temperamento.');
+        }
+    }
+
     function handleSubmit(e){
         e.preventDefault();
         // setInput({...input.name=input.name.toLowerCase()});
-        alert('personaje creado');
+        alert('Mascota creada!! Puedes encontrarla en el Home :)');
         setInput({
             name:"",
             image: "",
-            temperament: "",
-            height: 0,
-            weight: 0,
+            temperament: [],
+            height_max: 0,
+            weight_min: 0,
             life_span: 0
         })
         dispatch(postDog(input));
-        //useHistory.push('/home');
     }
 
-    // let validateName = /^[a-zA-Z\s]+$/;
-    // let validateUrl = /(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/;
 
     return (
         <>
         <Link to='./home' ><button className="botonSubmit">volver</button></Link>
         <h1 className="tituloCreacion">Crea tu mascota</h1>
         <form 
+            id='form'
             className="formCreation"
             onSubmit={(e)=>handleSubmit(e)}
         >
@@ -79,45 +106,51 @@ function Creacion(){
                 <div>
                     <label>Nombre:</label>
                     <input 
+                        id='name'
                         className="field"
                         type='text'
                         value={input.name}
                         name='name'
                         onChange={handleChange}
                     />
+                    {validation(input).name?<p className="validacionText">invalid name</p>:<p></p>}
                 </div>
                 <div>
                     <label>Imagen:</label>
                     <input 
+                        id='image'
                         className="field"
                         type='text'
                         value={input.image}
                         name='image'
                         onChange={handleChange}
                     />
+                    {validation(input).image?<p className="validacionText">invalid image</p>:<p></p>}
                 </div>
                 <div>
                     <label>Temperamento:</label>
                     <select
+                        id='temperament'
                         className="field"
-                        
-                        onChange={handleChange}
+                        onChange={handleTemperament}
+                        value={input.temperament}
+                        name='temperament'
                     >
                         {
                             AllTemperament?.map((el) =>{
                                 return (
                                     <option
                                         key={el.id}
-                                        name='temperament'
-                                        value={el.temperament}
-                                        name='temperament'
+                                        // value={el.temperament}
+                                        // name='temperament'
                                     >
-                                        {el.temperament}
+                                        {el.name}
                                     </option>
                                 )
                             })
                         }    
                     </select>
+                    {validation(input).temperament?<p className="validacionText">invalid temperament</p>:<p></p>}
                 </div>
             </div>
 
@@ -125,28 +158,33 @@ function Creacion(){
                 <div>
                     <label>Altura: {rangoHp}</label>
                     <input 
+                        id='height'
                         className="field"
                         type='range'
-                        value={input.height}
-                        name='height'
+                        value={input.height_max}
+                        name='height_max'
                         onInput={(e) => setRangoHp(e.target.value)}
                         onChange={handleChange}
                     />
+                    {validation(input).height_max?<p className="validacionText">invalid height</p>:<p></p>}
                 </div>
                 <div>
                     <label>Peso: {rangoAttack}</label>
                     <input 
+                        id='weight'
                         className="field"
                         type='range'
-                        value={input.weight}
-                        name='weight'
+                        value={input.weight_min}
+                        name='weight_min'
                         onInput={(e) => setRangoAttack(e.target.value)}
                         onChange={handleChange}
                     />
+                    {validation(input).weight_min?<p className="validacionText">invalid weight</p>:<p></p>}
                 </div>
                 <div>
                     <label>Año: {rangoDefense}</label>
                     <input
+                        id='year'
                         className="field"
                         type='range'
                         value={input.life_span}
@@ -154,32 +192,14 @@ function Creacion(){
                         onInput={(e) => setRangoDefense(e.target.value)}
                         onChange={handleChange}
                     />
+                    {validation(input).life_span?<p className="validacionText">invalid year</p>:<p></p>}
                 </div>
-          
-                <button className="botonSubmit" type="submit">Crear Personaje</button>
+
+                <button className="botonSubmit" type="submit" disabled={invalidCreated(input)}>Crear Perro</button>
             </div>
-        </form>
+        </form>        
         </>
     )
 }
 
 export default Creacion;
-
-
-
-
-// Ruta de creación de raza de perro: debe contener
-
-    // [ ] Un formulario controlado con JavaScript con los siguientes campos:
-    // Nombre -> ESTRING
-    // Altura (Diferenciar entre altura mínima y máxima) -> NUMBER
-    // Peso (Diferenciar entre peso mínimo y máximo) -> NUMBER
-    // Años de vida -> NUMBER
-
-    // [ ] Posibilidad de seleccionar/agregar uno o más temperamentos -> SELECT CON TEMPERAMENTOS
-
-    // [ ] Botón/Opción para crear una nueva raza de perro -> STRING?
-    // validaciones =>
-    // Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. 
-    
-    // Por ejemplo: Que el nombre de la raza no pueda contener números o símbolos, que el peso/altura mínimo no pueda ser mayor al máximo y viceversa, etc.

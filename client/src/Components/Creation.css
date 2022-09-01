@@ -47,10 +47,12 @@
     transition: all .3s;
     box-shadow: 6px 6px 12px #c5c5c5,
                 -6px -6px 12px #ffffff;
+    margin: 1rem;
 }
 
 .botonSubmit:hover{
     border: 1px solid white;
+    color: var(--secondary-color);
 }
 
 .botonSubmit:active {
@@ -58,4 +60,10 @@
 }
  .temperament{
     color: var(--contrast-color);
+ }
+
+ .validacionText {
+    font-size: 10px;
+    color: red;
+
  }

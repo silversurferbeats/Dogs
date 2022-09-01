@@ -2,7 +2,7 @@
 .dot-wave {
     --uib-size: 50px;
     --uib-speed: 0.6s;
-    --uib-color: #0d0909;
+    --uib-color: var(--contrast-color);
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

@@ -1,6 +1,6 @@
 /* From uiverse.io by @alexruix */
 /*Magic card*/
-.cardContainerDetail {
+/* .cardContainerDetail {
     margin-left: 35%;
     margin-top: 8%;
 }
@@ -30,11 +30,8 @@ width: var(--size);
 height: var(--size);
 border-radius: 50%;
 transform: translateY(-50%);
-/* background: #42caff;
-background: linear-gradient(to bottom, #42caff 0%, #e81aff 100%); */
 position: relative;
 transition: all .3s ease-in-out;
-/* object-fit: cover; */
 }
 
 .card-img img {
@@ -54,10 +51,10 @@ width: 90%;
 height: 100%;
 transform: translate(-50%, -50%);
 border: 1rem solid #e8e8e8;
-}
+} */
 
 /*Text*/
-.text-title {
+/* .text-title {
 text-transform: uppercase;
 font-size: 1.5em;
 color: #42caff;
@@ -70,11 +67,114 @@ text-align: center;
 color: #6f6d78;
 font-weight: 400;
 font-style: italic;
-}
+} */
 
 /*Hover*/
-.cardDetail:hover .card-img {
+/* .cardDetail:hover .card-img {
 --size: 150px;
 width: var(--size);
 height: var(--size);
+} */
+
+/* -----------------------------------> */
+
+
+.cardContainerDetail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-body);
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+.cardContainerDetail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--contrast-color), rgb(255, 85, 255, .1));
+    clip-path: circle(30% at right 70%);
+}
+.cardContainerDetail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--secondary-color), #e91e625c);
+    clip-path: circle(20% at 10% 10%);
+}
+.containerDetail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    z-index: 1;
+}
+.containerDetail .cardDetail {
+    position: relative;
+    width: 445px;
+    height: 470px;
+    margin: 30px;
+    box-shadow: 20px 20px 50px rgb(0, 0, 0, 0.5);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+.containerDetail .cardDetail .contentDetail {
+    padding: 20px;
+    text-align: center;
+    transition: 0.5s;
+    transform: translateY(100px);
+    opacity: 0;
+}
+.containerDetail .cardDetail:hover .contentDetail{
+    transform: translateY(0px);
+    opacity: 1;
+}
+.containerDetail .cardDetail .contentDetail h2 {
+    position: absolute;
+    top: -40px;
+    right: 30px;
+    font-size: 8em;
+    color: rgba(255, 255, 255, 0.521);
+    pointer-events: none;
+}
+.containerDetail .cardDetail .contentDetail h3 {
+    font-size: 1.8em;
+    color: var(--secondary-color);
+    z-index: 1;
+}
+.containerDetail .cardDetail .contentDetail p {
+    font-size: 2em;
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+
+.card-img {
+    --size: 0px;
+    width: var(--size);
+    height: var(--size);
+    max-height: 100%; 
+    border-radius: 50%;
+    transform: translateY(-50%);
+    position: relative;
+    transition: all .3s ease-in-out;
+    object-fit: contain;
+}
+
+.listTemperament {
+    list-style: none;
+    font-weight: 500;
+    font-size: 20px;
 }

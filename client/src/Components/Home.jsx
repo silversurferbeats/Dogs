@@ -5,6 +5,7 @@ import { getAllDogs } from '../Redux/Actions/Action';
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
 import './Home.css'
+// import BackgroundBubble from './Background';
 
 import Card from "./Card";
 import Paginado from "./Paginado";
@@ -13,9 +14,8 @@ import Loader from "./Loader";
 function Home(){
 
     const dispatch = useDispatch();
-    // geteo  el estado global de Redux:
+    // getteo  el estado global de Redux:
     const AllDogs = useSelector((state) => state.allDogs);
-    // console.log('useSelector ->', AllDogs);
 
     // PAGINADO:
     const [ currentPage, setCurrentPage ] = useState(1);
@@ -23,6 +23,7 @@ function Home(){
     const indexOfLastDog = currentPage * dogPerPage;
     const indexOfFirstDog = indexOfLastDog - dogPerPage;
     const currentDog = AllDogs?.slice(indexOfFirstDog, indexOfLastDog);
+
 
     const handleAnterior = (e) => {
         e.preventDefault();
@@ -50,6 +51,7 @@ function Home(){
 
     return (
         <>
+        {/* <BackgroundBubble/> */}
         <div>
             <SearchBar />
         </div>
@@ -80,18 +82,19 @@ function Home(){
                     </div>
                 }
             </div>
+
         </div>
 
         <footer>
             <div>
-                <button onClick={e => handleAnterior(e)}>anterior</button>
+                <button className="buttonPaginado" onClick={e => handleAnterior(e)}>anterior</button>
                 <Paginado 
                     dogPerPage={dogPerPage}
                     allDogs={AllDogs.length}
                     paginado={paginado}
                     currentPage={currentPage}
                 />
-                <button onClick={e => handleSiguiente(e)}>siguiente</button>
+                <button className="buttonPaginado" onClick={e => handleSiguiente(e)}>siguiente</button>
             </div>
         </footer>
         </>

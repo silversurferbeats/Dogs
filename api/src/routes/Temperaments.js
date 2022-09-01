@@ -1,8 +1,8 @@
 const {Router} =  require('express');
-const { getTemperamets } = require('../controllers/ControllersApi');
+const { funcionTemperament } = require('../controllers/ControllersApi');
 const router = Router()
 
 // RUTA
-router.get('/', getTemperamets)
+router.get('/', funcionTemperament)
 
 module.exports = router;
