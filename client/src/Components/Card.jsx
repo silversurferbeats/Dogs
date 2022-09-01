@@ -9,9 +9,9 @@ function Card({name, temperament, img}) {
                     <h3 className="nombre_card">{name}</h3>
                 </div>
                 {
-                    temperament.map(e => {
+                    temperament.map((e, i) => {
                         return (
-                            <p className="temperamentCard">{e}</p>
+                            <p key={i} className="temperamentCard">{e}</p>
                         )
                     })
                 }

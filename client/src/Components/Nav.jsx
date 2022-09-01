@@ -19,7 +19,6 @@ function Nav(){
     // FILTROS ->
     function handleChange(e){
         e.preventDefault()
-        console.log('valor input-->', input)
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -34,19 +33,16 @@ function Nav(){
     function handleExistent(e){
         e.preventDefault();
         dispatch(orderExistent(e.target.value));
-        console.log('se mando handleExistent');
     }
 
     function handlePeso(e){
         e.preventDefault();
         dispatch(orderPeso(e.target.value))
-        console.log('se mando el handlePeso')
     }
 
     function handleTemperament(e){
         e.preventDefault();
         dispatch(orderTemperament(e.target.value));
-        console.log('se mando el HandleTemperamen!! ->')
     }
 
 

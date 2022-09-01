@@ -22,11 +22,9 @@ const getApi = async () => {
 const getDogAll = async (req, res) => {
     const { name } = req.query;
     try {
-        // API ---------------->
         if (!name) {
             // pido la data de la API
             const ApiInfoData = await getApi()
-            
             // Inicio DB: creo el modelo de DB
             const getDb = async () => {
                 return await Dog.findAll({
@@ -56,31 +54,7 @@ const getDogAll = async (req, res) => {
         } else {
             // CUANDO EXISTE EL NOMBRE :
             const apiUrl2 = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
-            const apiInfo2 = apiUrl2.data.filter((e) => e.name.toUpperCase().includes(name.toUpperCase())); // -> filtro la data por el nombre.
-
-            //ACA PIDO EL NOMBRE A LA BASE DE DATOS :
-            const nameDog = await Dog.findAll({
-                includes: {
-                    model: Temperament,
-                    attributes: ["name"],
-                    through: { temperament: [] },
-                },
-            });
-
-            // creo el JSON que cincida con el nombre de DB
-            const resultName = nameDog.map(e =>{
-                return{
-                    id: e.id,
-                    image: e.image.url,
-                    name: e.name,
-                    temperament: (e.temperament ? e.temperament.split(',') : ['n/a']).map(e => e.trim()),
-                    height_max: e.height_max,
-                    height_min: e.height_min,
-                    weight_max: e.weight_max,
-                    weight_min: e.weight_min,
-                }
-            })
-            console.log('resultName ->', resultName);
+            const apiInfo2 = apiUrl2.data.filter((e) => e.name.toUpperCase().includes(name.toUpperCase())); //-> filtro la data por el nombre.
             // ACA MAPEO SOLO LO QUE QUIERO DE LA API
             const apiInfo5 = apiInfo2?.map((e) => {
                 return {
@@ -95,11 +69,36 @@ const getDogAll = async (req, res) => {
                 };
             });
 
+            //ACA PIDO EL NOMBRE A LA BASE DE DATOS :
+            const nameDog = await Dog.findAll({
+                includes: {
+                    model: Temperament,
+                    attributes: ["name"],
+                    through: { temperament: [] },
+                },
+            });
+            const filterDB = nameDog.filter((e) => e.name.includes(name)); //-> filtro la data por el nombre.
+            // creo el JSON que cincida con el nombre de DB
+            const resultName = filterDB.map(e =>{
+                return{
+                    id: e.id,
+                    image: e.image.url,
+                    name: e.name,
+                    temperament: (e.temperament ? e.temperament.split(',') : ['n/a']).map(e => e.trim()),
+                    height_max: e.height_max,
+                    height_min: e.height_min,
+                    weight_max: e.weight_max,
+                    weight_min: e.weight_min,
+                }
+            })
+
             const getDbAll = [...resultName, ...apiInfo5];
             res.send(getDbAll);
         }
     }catch (e){
-        res.send('404', new Error(e))
+        res.status(404).send({
+            message: e.message
+        })
     }
 }
 
@@ -135,10 +134,8 @@ const getApiId = async (req, res, next) => {
                     }
                 }]
             });
-
+            // filtro el nombre por BD
             const resultFuilterId = id_db.filter(e => e.id == [id]);
-            console.log('aca estooy --->', resultFuilterId)
-            // let DbInfoId = await id_db;
             const DbInfoFinalId = resultFuilterId.map((e) => {
                 return {
                     id: e.id,
@@ -148,15 +145,13 @@ const getApiId = async (req, res, next) => {
                     image: e.image,
                     createdInDb: e.createdInDb
                 }
-            })
-
-            // Pusheo el objeto a un array para poder devolver con el FindOne -> basicamente lo transformo
-            // let arrDB = Objet.sntries(id_db)
-        
+            })        
             res.send(DbInfoFinalId);
         }
     } else {
-        res.send({ e: 'error'});
+        res.status(404).send({
+            message: e.message
+        })
     }
 }
 
@@ -188,64 +183,13 @@ const postDog = async (req, res) => {
 const getTemperamets = async () => {
     const apiInfoget = await getApi()
     const filtro = apiInfoget.map((t) => t.temperament); // por cada temperamento lo guardo separado
-    // let tempFilt = [...new Set(filtro)]// hago un nuevo array con los temperamentos que tenia guardados y los nuevos, si se repiten se quitan
     const tempEnd = filtro.flat().filter((i, e, a) => a.indexOf(i) === e);
-    // console.log('tempEnd ->', tempEnd);
     
-    // AGREGO EL ARRAY DE TEMPERAMENTOS A LA BASE DE DATOS
-    //  tempFilt.forEach((e) => {
-    //   Temperament.findOrCreate({
-    //     where: {temperament:e},
-    //   });
-    // });
-
     await Temperament.bulkCreate(tempEnd.map(e => {
         return {
             name: e
         }
     }))
-
-
-
-
-    // if (!(await Temperament.findAll()).length) {
-    //   try {
-    //     // const apiTemp = await tempUrl.data?.map((e) => e.temperament? e.temperament : ['not temperament'])
-    //     //   .toString()
-    //     //   .trim()
-    //     //   .split(",");
-    //     const apiInfoget = await getApi()
-    //       const filtro = apiInfoget.map((t) => t.temperament); // por cada temperamento lo guardo separado
-    //       // let tempFilt = [...new Set(filtro)]// hago un nuevo array con los temperamentos que tenia guardados y los nuevos, si se repiten se quitan
-    //       const tempEnd = filtro.flat().filter((i, e, a) => a.indexOf(i) === e);
-    //       console.log('tempEnd ->', tempEnd);
-    //     // AGREGO EL ARRAY DE TEMPERAMENTOS A LA BASE DE DATOS
-    //     //  tempFilt.forEach((e) => {
-    //     //   Temperament.findOrCreate({
-    //     //     where: {temperament:e},
-    //     //   });
-    //     // });
-
-    //     await Temperament.bulkCreate(tempEnd.map(e => {
-    //         return {
-    //             name: e
-    //         }
-    //     }))
-
-
-
-
-    //     // Para cada e del arrayDeTemp traido de la api hace un findOrCreate al modelo Temperament donde name sea ahora sea cada temperamento(e)
-
-    //     // const db = await Temperament.findAll();
-    //     // res.send(db);
-    //   } catch (e) {
-    //     console.log(e);
-    //   }
-    // } else {
-    // //   res.send({ message: "Temperamento no encontrado" });
-    // console.log('temperamento no encontrado.')
-    // }
 };
 getTemperamets()
 
@@ -257,7 +201,6 @@ const funcionTemperament = async (req, res) => {
 module.exports = {
     getDogAll,
     getApiId,
-    // getTemperamets,
     funcionTemperament,
     postDog
 };

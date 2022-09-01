@@ -27,8 +27,8 @@ function Detail(){
                 detailDogData?.map((el) => {
                     return (
                         <>
-                        <Link to='../home' ><button className="botonSubmit">volver</button></Link>
-                        <div className="containerDetail">
+                        <Link key={el.id} to='../home' ><button className="botonSubmit">volver</button></Link>
+                        <div  className="containerDetail">
                             <div className="cardDetail">
                                 <div className="card-img">
                                     <img src={el.image} />

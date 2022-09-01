@@ -15,7 +15,6 @@ function SearchBar(){
     function hanldeInputChange(e){
         e.preventDefault()
         setName(e.target.value)
-        console.log('esto es lo que busco ->',name)
     }
 
     function handleSubmit(e){

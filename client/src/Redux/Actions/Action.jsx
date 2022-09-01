@@ -16,8 +16,6 @@ export const TEMPERAMENT_DOG = 'TEMPERAMENT_DOG';
 export function getAllDogs(){
     return async function(dispatch){
         let json = await axios.get('http://localhost:3001/dogs');
-        // console.log('peticion getAll actions --->', json.data)
-
         return dispatch({
             type: 'GET_ALL_DOG',
             payload: json.data
@@ -45,7 +43,6 @@ export function DetailDog(id){
     return async function(dispatch){
         try {
             let dataDetail = await axios.get(`http://localhost:3001/dogs/${id}`);
-            console.log('detalles del perro ---> ', dataDetail.data);
             return dispatch({
                 type: 'DETAIL_DOG',
                 payload: dataDetail.data
@@ -76,7 +73,6 @@ export function postDog(payload){
     return async function(dispatch){
         try{
             const responsePost = await axios.post('http://localhost:3001/dogs', payload);
-            console.log('post creacion -->', responsePost);
             return dispatch({
                 type: 'POST_DOG',
                 payload: responsePost
@@ -111,7 +107,6 @@ export function orderPeso(payload){
 }
 
 export function orderExistent(payload){
-    console.log(payload);
     return {
         type: 'EXISTENT_DOG',
         payload
@@ -119,7 +114,6 @@ export function orderExistent(payload){
 }
 
 export function orderTemperament(payload){
-    console.log('temperamentPayload ->',payload);
     return {
         type: 'TEMPERAMENT_DOG',
         payload

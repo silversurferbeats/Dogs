@@ -78,7 +78,6 @@ const rootReducer = (state = inicialState, action) => {
             }
         case EXISTENT_DOG:
             let newStateExistent = state.allRaza;
-            console.log('existente REDUCER  -->', newStateExistent);
             const filterExistent = action.payload === 'created' ? 
                 newStateExistent.filter((el) => el.createdInDb)
                 :
@@ -91,7 +90,6 @@ const rootReducer = (state = inicialState, action) => {
             let newStatePeso = state.allRaza;
             let sortedArrPeso = action.payload === 'menor' ?
                 newStatePeso.sort(function(a, b){
-                    console.log('sortedArrPeso a ->', a.weight_min)
                     if(a.weight_min[1] > b.weight_min[1]){
                         return 1;
                     }
@@ -110,7 +108,6 @@ const rootReducer = (state = inicialState, action) => {
                     }
                     return 0;
                 })
-                console.log('sortedArrPeso REDUCER ->', sortedArrPeso);
             return {
                 ...state,
                 allDogs: sortedArrPeso.map(e => e)
