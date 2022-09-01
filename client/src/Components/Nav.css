@@ -14,25 +14,17 @@
     list-style-type: none;
 }
 
-/* .selectMenu {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-} */
-
 .selectMenu {
     appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
     width: 10rem;
     display: block;
-    /* padding: 1rem 1.2rem; */
     color: var(--contrast-color);
     position: relative;
     border: none;
     padding: 1rem;
     margin-bottom: 4rem;
-    /* border-radius: 1rem; */
     background: transparent;
     box-shadow: -4px 2px 15px #c5c5c5, -6px 1px 10px #ffffff;
     transition: 0.3s;
@@ -81,7 +73,6 @@
    rgba(0,0,0,0.1) -1px -1px, rgba(255,255,255,0.1) 1px 1px;
    color: var(--background-body);
    background: transparent;
-
    margin: 10px;
 }
 

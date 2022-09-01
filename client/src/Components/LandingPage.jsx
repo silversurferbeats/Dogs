@@ -29,14 +29,6 @@ function LandingPage(){
                 </div>
             </div>
             <div className="container_outer_img">
-                {/* <div className="img-inner">
-                    <img
-                        src={imgLanding}
-                        alt=""
-                        className="container_img"
-                    />
-                </div> */}
-
                 <div className="container__slider">
 
                     <div className="container__content">
@@ -58,31 +50,7 @@ function LandingPage(){
                         </div>
                     </div>
 
-                </div>
-
-
-
-                
-
-                
-                
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+                </div>               
             </div>
         </div>
         <div className="overlay">
@@ -93,16 +61,3 @@ function LandingPage(){
 }
 
 export default LandingPage;
-
-
-
-{/* <div className='conteiner'>
-            <video src={videoBg} muted loop autoPlay></video>
-            <div className='content'>
-                <img src={imgLogo} alt='logoPokemon' />
-                <h1>Dogs</h1>
-                <Link to='/home'>
-                    <button>ingresar</button>
-                </Link>
-            </div>
-        </div> */}

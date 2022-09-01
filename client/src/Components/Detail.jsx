@@ -9,19 +9,14 @@ import './Detail.css';
 function Detail(){
     const dispatch = useDispatch();
     const { id } = useParams();
-    console.log('id DETAIL ->', id);
     const detailDogData = useSelector((state) => state.detailDog);
-    // const { name, image, temperaments, height_max, weight_min, life_span } = useSelector((state) => state.detailDog);
-    console.log('detailDogData ->', detailDogData);
-
+    
     useEffect(() => {
         dispatch(DetailDog(id));
-        console.log("se mando");
     }, [id, dispatch]);
 
     return (
         <>
-        
         <div className="cardContainerDetail">
             {
                 detailDogData?.map((el) => {
@@ -36,19 +31,17 @@ function Detail(){
                                 <div className="contentDetail">
                                     <h2>{id}</h2>
                                     <h3>{el.name}</h3>
-                                    {/* { 
-                                        el.temperament.map(e => 
+                                    { 
+                                        el.temperament.map((e, i) => 
                                             e.name?(
-                                                <ul className="listTemperament">
+                                                <ul key={i} className="listTemperament">
                                                     <li>{e.name}</li>
                                                 </ul>
                                             )
                                             : 
-                                            <li>{e}</li>
+                                            <li key={i} >{e}</li>
                                         )
-                                    } */}
-                                    
-                                    {/* <p>{el.temperament}</p> */}
+                                    }
                                     <p className="text-body">Altura: {el.height_max} </p>
                                     <p className="text-body">Peso: {el.weight_min} </p>
                                     <p className="text-body">Años: {el.life_span} </p>
@@ -66,18 +59,3 @@ function Detail(){
 }
 
 export default Detail;
-
-
-
-{/* <div class="cardDetail">
-    <div class="card-img">
-        <img src={el.image} />
-    </div>
-    <div class="card-info">
-        <p class="text-title"> {el.name} </p>
-        <p class="text-body">Temperamento: {el.temperament} </p>
-        <p class="text-body">Altura: {el.height_max} </p>
-        <p class="text-body">Peso: {el.weight_min} </p>
-        <p class="text-body">Años: {el.life_span} </p>
-    </div>
-</div> */}

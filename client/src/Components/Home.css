@@ -1,5 +1,4 @@
 body {
-    /* background-image: url('#'); */
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -8,13 +7,10 @@ body {
     background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
 }
-
 .bodyContainer{
     display: flex;
     gap: 5rem;
 }
-
-
 .cardContainer {
     display: grid;
     grid-template-columns: 400px 400px;
@@ -25,13 +21,11 @@ body {
     padding: 1em 3em;
     margin: 1em 25%;
 }
-
 .Loader {
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
 }
-
 footer {
     width: 100%;
     padding: 50px 0px;
@@ -44,7 +38,6 @@ footer {
     mask-size: cover;
     padding-top: 6rem;
 }
-
 .buttonPaginado {
     margin: 1rem;
     color: black;
