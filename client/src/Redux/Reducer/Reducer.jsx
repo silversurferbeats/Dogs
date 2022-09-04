@@ -88,22 +88,23 @@ const rootReducer = (state = inicialState, action) => {
             }
         case PESO_DOG:
             let newStatePeso = state.allRaza;
+            console.log('newStarte', newStatePeso);
             let sortedArrPeso = action.payload === 'menor' ?
                 newStatePeso.sort(function(a, b){
-                    if(a.weight_min[1] > b.weight_min[1]){
+                    if(a.weight_min > b.weight_min){
                         return 1;
                     }
-                    if(b.weight_min[1] > a.weight_min[1]){
+                    if(b.weight_min > a.weight_min){
                         return -1;
                     }
                     return 0;
                 })
                 :
                 newStatePeso.sort(function(a, b){
-                    if(a.weight_min[1] > b.weight_min[1]){
+                    if(a.weight_min > b.weight_min){
                         return -1;
                     }
-                    if(b.weight_min[1] > a.weight_min[1]){
+                    if(b.weight_min > a.weight_min){
                         return 1;
                     }
                     return 0;

@@ -10,6 +10,7 @@ function Detail(){
     const dispatch = useDispatch();
     const { id } = useParams();
     const detailDogData = useSelector((state) => state.detailDog);
+    console.log('detailDogData ->', detailDogData);
     
     useEffect(() => {
         dispatch(DetailDog(id));
@@ -26,7 +27,7 @@ function Detail(){
                         <div  className="containerDetail">
                             <div className="cardDetail">
                                 <div className="card-img">
-                                    <img src={el.image} />
+                                    <img src={el.image} alt="card_img"/>
                                 </div>
                                 <div className="contentDetail">
                                     <h2>{id}</h2>

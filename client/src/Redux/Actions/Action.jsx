@@ -43,6 +43,7 @@ export function DetailDog(id){
     return async function(dispatch){
         try {
             let dataDetail = await axios.get(`http://localhost:3001/dogs/${id}`);
+            console.log('dataDetail', dataDetail)
             return dispatch({
                 type: 'DETAIL_DOG',
                 payload: dataDetail.data
@@ -100,6 +101,7 @@ export function orderByRaza(payload){
 }
 
 export function orderPeso(payload){
+
     return {
         type: 'PESO_DOG',
         payload

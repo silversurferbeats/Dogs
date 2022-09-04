@@ -24,7 +24,7 @@ function Creacion(){
     const [input, setInput ] = useState({
         name:"",
         image: "",
-        temperament: [],
+        temperaments: [],
         height: 0,
         weight: 0,
         life_span: 0
@@ -37,7 +37,6 @@ function Creacion(){
 
     // VALIDACIONES :
     const validation = (input) => {
-        // console.log('input ->', input.temperament);
         let error = {}
         if(input.name.length < 3 || input.name.length > 15) error.name = 'invalid name';
         if(input.image.length < 3 ) error.image = 'invalid image';
@@ -58,7 +57,6 @@ function Creacion(){
 
 
     function handleChange(e){
-        console.log('valor input-->', input)
         setInput({
             ...input,
             [e.target.name]: e.target.value
@@ -66,13 +64,13 @@ function Creacion(){
     }
 
     function handleTemperament(e){
-        if(!input.temperament.includes(e.target.value)){
+        if(!input.temperaments.includes(e.target.value)){
             setInput({
                 ...input,
-                temperament: [...input.temperament, e.target.value]
+                temperaments: [...input.temperaments, e.target.value]
             })
         }
-        if(input.temperament.includes(e.target.value)){
+        if(input.temperaments.includes(e.target.value)){
             alert('no se puede elegir el mismo temperamento.');
         }
     }
@@ -133,8 +131,8 @@ function Creacion(){
                         id='temperament'
                         className="field"
                         onChange={handleTemperament}
-                        value={input.temperament}
-                        name='temperament'
+                        value={input.temperaments}
+                        name='temperaments'
                     >
                         {
                             AllTemperament?.map((el) =>{

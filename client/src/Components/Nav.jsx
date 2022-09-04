@@ -43,6 +43,7 @@ function Nav(){
     function handleTemperament(e){
         e.preventDefault();
         dispatch(orderTemperament(e.target.value));
+        console.log('se manda!')
     }
 
 

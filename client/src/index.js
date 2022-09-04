@@ -7,6 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 // IMPORTO REDUX
 import { Provider } from 'react-redux';
 import { store } from './Redux/Store/Store';
+import axios from 'axios';
+require('dotenv').config({path: './.env'});
+
+// VARIABLE DE ENTORNO:
+axios.defaults.baseURL = process.env.REAT_APP_API || 'http://localhost:3001';
 
 ReactDOM.render(
   <Provider store={store}>
