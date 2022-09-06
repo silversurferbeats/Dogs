@@ -12,23 +12,23 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING,
-      //allowNull: false
+      allowNull: false
     },
     height_max: {
       type: DataTypes.INTEGER,
-      //allowNull: false
+      allowNull: false
     },
     weight_min: {
       type: DataTypes.INTEGER,
-      //allowNull: false
+      allowNull: false
     },
     life_span: {
       type: DataTypes.INTEGER,
-      //allowNull: false
+      allowNull: false
     },
     image: {
       type: DataTypes.TEXT,
-      //allowNull: false
+      allowNull: false
     },
     createdInDb: {
       type: DataTypes.BOOLEAN,
