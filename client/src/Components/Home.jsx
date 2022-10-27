@@ -55,6 +55,7 @@ function Home(){
         <div>
             <SearchBar />
         </div>
+
         <div className="bodyContainer">
             <div className="menuContainer">
                 <Nav />
