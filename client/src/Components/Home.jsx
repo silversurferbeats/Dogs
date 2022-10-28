@@ -10,6 +10,7 @@ import './Home.css'
 import Card from "./Card";
 import Paginado from "./Paginado";
 import Loader from "./Loader";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 function Home(){
 
@@ -44,6 +45,10 @@ function Home(){
         setCurrentPage(pageNumber);
     }
     //  ------------------>
+    const theme = useTheme();
+    console.log(theme);
+    const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+    console.log(isMatch);
 
     useEffect(()=>{
         dispatch(getAllDogs())
@@ -51,15 +56,22 @@ function Home(){
 
     return (
         <>
-        {/* <BackgroundBubble/> */}
+        
         <div>
             <SearchBar />
         </div>
 
         <div className="bodyContainer">
-            <div className="menuContainer">
-                <Nav />
-            </div>
+            {
+                isMatch ? 
+                (
+                    <></>
+                ) : (
+                    <div className="menuContainer">
+                        <Nav />
+                    </div>
+                )
+            }
             <div className="cardContainer">
                 {
                     currentDog.length ?

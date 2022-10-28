@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Nav from './Nav';
 import {
   Drawer,
   IconButton,
@@ -8,7 +9,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["Products", "Services", "ABoutUs", "ContactUs"];
+const pages = ["Ordenamiento", "Peso", "Existentes", "Temperamento"];
 
 
 const DrawerComp = () => {
@@ -21,15 +22,7 @@ const DrawerComp = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <List>
-          {pages.map((page, index) => (
-            <ListItemButton key={index}>
-              <ListItemIcon>
-                <ListItemText>{page}</ListItemText>
-              </ListItemIcon>
-            </ListItemButton>
-          ))}
-        </List>
+        <Nav/>
       </Drawer>
       <IconButton
         sx={{ color: "white", marginLeft: "auto" }}

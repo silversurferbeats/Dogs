@@ -11,7 +11,7 @@ import axios from 'axios';
 require('dotenv').config({path: './.env'});
 
 // VARIABLE DE ENTORNO:
-axios.defaults.baseURL = process.env.REAT_APP_API || 'http://localhost:3001';
+axios.defaults.baseURL = 'https://dogs-deploy-henry.herokuapp.com';
 
 ReactDOM.render(
   <Provider store={store}>
