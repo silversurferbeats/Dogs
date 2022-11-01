@@ -4,13 +4,13 @@
     border-radius: 30px;
     background: transparent;
     box-shadow: 15px 15px 30px #bebebe,
-                -10px -10px 30px #ffffff98;
+                -10px -10px 30px black;
     
 }
 
 .card:hover {
-    box-shadow: 20px 20px 40px #bebebe,
-    -15px -15px 30px #ffffff;
+    box-shadow: 20px 20px 40px black,
+    -15px -15px 30px #bebebe;
     transform: translateY(3%);
 }
 

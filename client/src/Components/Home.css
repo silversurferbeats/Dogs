@@ -3,8 +3,11 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: var(--background-body);
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    /* background-color: var(--background-body);
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%); */
+    background: #ee0979;
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+    background: linear-gradient(to right, #ff6a00, #ee0979);
 
 }
 .bodyContainer{
@@ -18,9 +21,20 @@ body {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 1em 3em;
+    padding: 4em 1em;
     margin: 1em 25%;
 }
+
+@media screen and (max-width: 768px) {
+    .cardContainer{
+        display: grid;
+        grid-template-columns: 350px;
+        grid-template-rows: 300px;
+        margin-top: 3rem;
+        gap: 4rem;
+    }
+}
+
 .Loader {
     display: inline-block;
     margin-left: auto;

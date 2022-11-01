@@ -1,4 +1,33 @@
 
+.creationContainer{
+    background: #ee0979;
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+}
+.creationContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--contrast-color), rgb(255, 85, 255, .1));
+    clip-path: circle(30% at right 70%);
+}
+.creationContainer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(var(--secondary-color), #e91e625c);
+    clip-path: circle(20% at 10% 10%);
+}
+
+
+
+
 .tituloCreacion {
     color: var(--contrast-color);
 }
@@ -14,7 +43,8 @@
     backdrop-filter: blur(8px);
     border-radius: 30px;
     background: #e0e0e0;
-    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+    box-shadow: 15px 15px 30px #bebebe,
+                -10px -10px 30px black;
 }
 
 .formCreation .field {
@@ -28,7 +58,7 @@
 }
 
 .formCreation .field:focus {
-    border-color: black;
+    border-color: #1f53c5;
 }
 
 .formCreation div {
@@ -45,8 +75,8 @@
     background: #e8e8e8;
     border: 1px solid #e8e8e8;
     transition: all .3s;
-    box-shadow: 6px 6px 12px #c5c5c5,
-                -6px -6px 12px #ffffff;
+    box-shadow: 15px 15px 30px #bebebe,
+                -10px -10px 30px black;
     margin: 1rem;
 }
 

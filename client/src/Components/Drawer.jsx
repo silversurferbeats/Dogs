@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import Nav from './Nav';
 import {
   Drawer,
-  IconButton,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
+  IconButton
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["Ordenamiento", "Peso", "Existentes", "Temperamento"];
 
 
 const DrawerComp = () => {
@@ -22,8 +17,11 @@ const DrawerComp = () => {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <Nav/>
+        <div sx={{ background: "#063970" }}>
+          <Nav />
+        </div>
       </Drawer>
+      
       <IconButton
         sx={{ color: "white", marginLeft: "auto" }}
         onClick={() => setOpenDrawer(!openDrawer)}

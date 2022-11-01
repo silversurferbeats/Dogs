@@ -92,14 +92,45 @@ function SearchBar(){
 
     return (
         <>
-        <AppBar sx={{ background: "#063970" }}>
-            <Toolbar>
-            <PetsIcon sx={{ transform: "scale(1)" }} />
-            {isMatch ? (
-                <>
+        <AppBar sx={{ background: "transparent" }}>
+            <Toolbar sx={{ width: "100%" }}>
+                <PetsIcon sx={{ transform: "scale(1)"}} />
+                {isMatch ? (
+                    <>
+                        <FormControl 
+                            onClick={(e) => handleSubmit(e)}
+                            sx={{ flexDirection: 'row' }} 
+                            target="_blank"
+                        >
+                            <Search>
+                                <SearchIconWrapper>
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search…"
+                                    inputProps={{ 'aria-label': 'search' }}
+                                    onChange={(e) => hanldeInputChange(e)}
+                                />
+                            </Search>
+                            <Button 
+                                variant="contained"
+                                onSubmit={(e) => handleSubmit(e)}
+                                type='submit' 
+                            
+                            >
+                                Buscar
+                            </Button>
+                        </FormControl>
+                        <DrawerComp />
+                    </>
+                ) : (
+                    <>
+                    <Typography sx={{ fontSize: "2rem", paddingLeft: "5%" }}>
+                        Dogs
+                    </Typography>
                     <FormControl 
                         onClick={(e) => handleSubmit(e)}
-                        sx={{ flexDirection: 'row' }} 
+                        style={{ flexDirection: 'row' }}
                         target="_blank"
                     >
                         <Search>
@@ -120,49 +151,19 @@ function SearchBar(){
                             Buscar
                         </Button>
                     </FormControl>
-                    <DrawerComp />
-                </>
-            ) : (
-                <>
-                <Typography sx={{ fontSize: "2rem", paddingLeft: "5%" }}>
-                    Dogs
-                </Typography>
-                <FormControl 
-                    onClick={(e) => handleSubmit(e)}
-                    style={{ flexDirection: 'row' }}
-                    target="_blank"
-                >
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                            onChange={(e) => hanldeInputChange(e)}
-                        />
-                    </Search>
-                    <Button 
-                        variant="contained"
-                        onSubmit={(e) => handleSubmit(e)}
-                        type='submit' 
-                    >
-                        Buscar
-                    </Button>
-                </FormControl>
-                <Link to={'./creation'} style={{  marginLeft: "18%" }}>
+                    <Link to={'./creation'} style={{  marginLeft: "18%" }}>
+                        <Button sx={{ marginLeft: "auto" }} variant="contained">
+                            crear perro
+                        </Button>
+                    </Link>
                     <Button sx={{ marginLeft: "auto" }} variant="contained">
-                        crear perro
+                        Login
                     </Button>
-                </Link>
-                <Button sx={{ marginLeft: "auto" }} variant="contained">
-                    Login
-                </Button>
-                <Button sx={{ marginLeft: "10px" }} variant="contained">
-                    SignUp
-                </Button>
-                </>
-            )}
+                    <Button sx={{ marginLeft: "10px" }} variant="contained">
+                        SignUp
+                    </Button>
+                    </>
+                )}
             </Toolbar>
         </AppBar>
         </>

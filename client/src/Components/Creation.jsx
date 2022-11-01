@@ -92,111 +92,112 @@ function Creacion(){
 
 
     return (
-        <>
-        <Link to='./home' ><button className="botonSubmit">volver</button></Link>
-        <h1 className="tituloCreacion">Crea tu mascota</h1>
-        <form 
-            id='form'
-            className="formCreation"
-            onSubmit={(e)=>handleSubmit(e)}
-        >
-            <div>
+        <div className="creationContainer">
+            
+            <h1 className="tituloCreacion">Crea tu mascota</h1>
+            <form 
+                id='form'
+                className="formCreation"
+                onSubmit={(e)=>handleSubmit(e)}
+            >
                 <div>
-                    <label>Nombre:</label>
-                    <input 
-                        id='name'
-                        className="field"
-                        type='text'
-                        value={input.name}
-                        name='name'
-                        onChange={handleChange}
-                    />
-                    {validation(input).name?<p className="validacionText">invalid name</p>:<p></p>}
-                </div>
-                <div>
-                    <label>Imagen:</label>
-                    <input 
-                        id='image'
-                        className="field"
-                        type='text'
-                        value={input.image}
-                        name='image'
-                        onChange={handleChange}
-                    />
-                    {validation(input).image?<p className="validacionText">invalid image</p>:<p></p>}
-                </div>
-                <div>
-                    <label>Temperamento:</label>
-                    <select
-                        id='temperament'
-                        className="field"
-                        onChange={handleTemperament}
-                        value={input.temperaments}
-                        name='temperaments'
-                    >
-                        {
-                            AllTemperament?.map((el) =>{
-                                return (
-                                    <option
-                                        key={el.id}
-                                        // value={el.temperament}
-                                        // name='temperament'
-                                    >
-                                        {el.name}
-                                    </option>
-                                )
-                            })
-                        }    
-                    </select>
-                    {validation(input).temperament?<p className="validacionText">invalid temperament</p>:<p></p>}
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <label>Altura: {rangoHp}</label>
-                    <input 
-                        id='height'
-                        className="field"
-                        type='range'
-                        value={input.height_max}
-                        name='height_max'
-                        onInput={(e) => setRangoHp(e.target.value)}
-                        onChange={handleChange}
-                    />
-                    {validation(input).height_max?<p className="validacionText">invalid height</p>:<p></p>}
-                </div>
-                <div>
-                    <label>Peso: {rangoAttack}</label>
-                    <input 
-                        id='weight'
-                        className="field"
-                        type='range'
-                        value={input.weight_min}
-                        name='weight_min'
-                        onInput={(e) => setRangoAttack(e.target.value)}
-                        onChange={handleChange}
-                    />
-                    {validation(input).weight_min?<p className="validacionText">invalid weight</p>:<p></p>}
-                </div>
-                <div>
-                    <label>Año: {rangoDefense}</label>
-                    <input
-                        id='year'
-                        className="field"
-                        type='range'
-                        value={input.life_span}
-                        name='life_span'
-                        onInput={(e) => setRangoDefense(e.target.value)}
-                        onChange={handleChange}
-                    />
-                    {validation(input).life_span?<p className="validacionText">invalid year</p>:<p></p>}
+                    <div>
+                        <label>Nombre:</label>
+                        <input 
+                            id='name'
+                            className="field"
+                            type='text'
+                            value={input.name}
+                            name='name'
+                            onChange={handleChange}
+                        />
+                        {validation(input).name?<p className="validacionText">invalid name</p>:<p></p>}
+                    </div>
+                    <div>
+                        <label>Imagen:</label>
+                        <input 
+                            id='image'
+                            className="field"
+                            type='text'
+                            value={input.image}
+                            name='image'
+                            onChange={handleChange}
+                        />
+                        {validation(input).image?<p className="validacionText">invalid image</p>:<p></p>}
+                    </div>
+                    <div>
+                        <label>Temperamento:</label>
+                        <select
+                            id='temperament'
+                            className="field"
+                            onChange={handleTemperament}
+                            value={input.temperaments}
+                            name='temperaments'
+                        >
+                            {
+                                AllTemperament?.map((el) =>{
+                                    return (
+                                        <option
+                                            key={el.id}
+                                            // value={el.temperament}
+                                            // name='temperament'
+                                        >
+                                            {el.name}
+                                        </option>
+                                    )
+                                })
+                            }    
+                        </select>
+                        {validation(input).temperament?<p className="validacionText">invalid temperament</p>:<p></p>}
+                    </div>
                 </div>
 
-                <button className="botonSubmit" type="submit" disabled={invalidCreated(input)}>Crear Perro</button>
-            </div>
-        </form>        
-        </>
+                <div>
+                    <div>
+                        <label>Altura: {rangoHp}</label>
+                        <input 
+                            id='height'
+                            className="field"
+                            type='range'
+                            value={input.height_max}
+                            name='height_max'
+                            onInput={(e) => setRangoHp(e.target.value)}
+                            onChange={handleChange}
+                        />
+                        {validation(input).height_max?<p className="validacionText">invalid height</p>:<p></p>}
+                    </div>
+                    <div>
+                        <label>Peso: {rangoAttack}</label>
+                        <input 
+                            id='weight'
+                            className="field"
+                            type='range'
+                            value={input.weight_min}
+                            name='weight_min'
+                            onInput={(e) => setRangoAttack(e.target.value)}
+                            onChange={handleChange}
+                        />
+                        {validation(input).weight_min?<p className="validacionText">invalid weight</p>:<p></p>}
+                    </div>
+                    <div>
+                        <label>Año: {rangoDefense}</label>
+                        <input
+                            id='year'
+                            className="field"
+                            type='range'
+                            value={input.life_span}
+                            name='life_span'
+                            onInput={(e) => setRangoDefense(e.target.value)}
+                            onChange={handleChange}
+                        />
+                        {validation(input).life_span?<p className="validacionText">invalid year</p>:<p></p>}
+                    </div>
+
+                    <button className="botonSubmit" type="submit" disabled={invalidCreated(input)}>Crear Perro</button>
+                </div>
+            </form>    
+            <Link to='./home' ><button className="botonSubmit">volver</button></Link>    
+        </div>
     )
 }
 
